@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.index');
+        return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('redirects', HomeController::class, '__invoke');

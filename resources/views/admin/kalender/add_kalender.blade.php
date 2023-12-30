@@ -5,10 +5,10 @@
      <!-- Page Heading -->
      <div class="row">
         <div class="col">
-            <h1 class="h3 mb-2 text-gray-800">Pelaksanaan</h1>
+            <h1 class="h3 mb-2 text-gray-800">Tambah Pengaturan Kalender</h1>
         </div>
         <div class="text-end mb-2">
-            <a href="{{route('pelaksanaan.add')}}"><button type="button" class="btn btn-primary">Tambah Pelaksanaan</button></a>
+            <a href="#"><button type="button" class="btn btn-primary">Pengajuan Cuti</button></a>
         </div>
     </div>
 
