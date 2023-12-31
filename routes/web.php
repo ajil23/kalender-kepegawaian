@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('redirects', HomeController::class, '__invoke');
+Route::get('redirects', [HomeController::class, '__invoke']);
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('pengajuan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
+    Route::get('rekapitulasi', [AdminController::class, 'rekapitulasiCuti'])->name('rekapitulasi.view');
+});
