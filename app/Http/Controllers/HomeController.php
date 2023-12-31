@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function redirectUser()
     {
         if (auth()->user()->hasRole('atasan')) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('atasn.dashboard');
         }
         if (auth()->user()->hasRole('admin')) {
             return redirect()->route('admin.dashboard');

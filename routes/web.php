@@ -24,14 +24,13 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'redirectUser'])->name('dashboard');
 });
 
-Route::get('redirects', [HomeController::class, '__invoke']);
+
 
 Route::group(['prefix' => 'admin'], function(){
+    Route::get('admin_dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('pengajuan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
     Route::get('rekapitulasi', [AdminController::class, 'rekapitulasiCuti'])->name('rekapitulasi.view');
     Route::get('kalender', [AdminController::class, 'viewKalender'])->name('kalender.view');
