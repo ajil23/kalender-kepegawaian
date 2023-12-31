@@ -51,7 +51,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="{{'admin/kalender' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('kalender.view')}}">
             <i class="fas fa-solid fa-file"></i>
             <span>Kalender</span></a>
     </li>
@@ -73,7 +73,7 @@
          </a>
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
-                 <a class="collapse-item" href="buttons.html">Pengaturan Cuti</a>
+                 <a class="collapse-item" href="{{route('setting.view')}}">Pengaturan Cuti</a>
                  <a class="collapse-item" href="cards.html">Pengaturan Kalender</a>
              </div>
          </div>

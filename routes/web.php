@@ -34,4 +34,6 @@ Route::get('redirects', [HomeController::class, '__invoke']);
 Route::group(['prefix' => 'admin'], function(){
     Route::get('pengajuan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
     Route::get('rekapitulasi', [AdminController::class, 'rekapitulasiCuti'])->name('rekapitulasi.view');
+    Route::get('kalender', [AdminController::class, 'viewKalender'])->name('kalender.view');
+    Route::get('setting/cuti', [AdminController::class, 'settingCuti'])->name('setting.view');
 });
