@@ -10,18 +10,17 @@ class HomeController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function redirectUser()
     {
-        $role = Auth::user()->role;
-    
-            if($role == '2'){
-                return view('atasan.index');
-            }
-            elseif($role == '1'){
-                return view('admin.index');
-            }
-            else{
-                return view('pegawai.index');
-            }
+        if (auth()->user()->hasRole('atasan')) {
+            return redirect()->route('admin.dashboard');
+        }
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        if (auth()->user()->hasRole('pegawai')) {
+            return redirect()->route('user.home');
+        }
     }
 }
