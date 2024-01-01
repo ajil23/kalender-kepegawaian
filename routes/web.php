@@ -36,5 +36,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('kalender', [AdminController::class, 'viewKalender'])->name('kalender.view');
     Route::get('setting/cuti', [AdminController::class, 'settingCuti'])->name('setting.view');
     Route::post('kalender/store', [AdminController::class, 'storeKalender'])->name('store.kalender');
+    Route::patch('kalender/update/{id}', [AdminController::class, 'updatekalender'])->name('kalender.update');
+    Route::delete('kalender/destroy/{id}', [AdminController::class, 'kalenderDestroy'])->name('kalender.destroy');  
     Route::get('detail-pengajuan', [AdminController::class, 'detail'])->name('detail.view');
 });
