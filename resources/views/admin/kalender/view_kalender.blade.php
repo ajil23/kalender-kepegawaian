@@ -106,7 +106,46 @@
                     });
                 },
                 editable: true,
+                eventDrop: function(event) {
+                    var id = event.id;
+                    console.log(id);
+                    var start_event = moment(event.start).format('YYYY-MM-DD');
+                    var end_event = moment(event.end).format('YYYY-MM-DD');
 
+                    $.ajax({
+                        url: "{{ route('kalender.update', '') }}" + '/' + id,
+                        type: "PATCH",
+                        dataType: 'json',
+                        data: {
+                            start_event,
+                            end_event
+                        },
+                        success: function(response) {
+                            swal("Good job!", "Event Updated!", "success");
+                        },
+                        error: function(error) {
+                            console.log(error)
+                        },
+                    });
+                },
+                eventClick: function(event) {
+                    var id = event.id;
+
+                    if (confirm('Apakah kamu yakin menghapus data ini')) {
+                        $.ajax({
+                            url: "{{ route('kalender.destroy', '') }}" + '/' + id,
+                            type: "DELETE",
+                            dataType: 'json',
+                            success: function(response) {
+                                $('#calendar').fullCalendar('removeEvents', response);
+                                // swal("Good job!", "Event Deleted!", "success");
+                            },
+                            error: function(error) {
+                                console.log(error)
+                            },
+                        });
+                    }
+                }
 
 
             });
