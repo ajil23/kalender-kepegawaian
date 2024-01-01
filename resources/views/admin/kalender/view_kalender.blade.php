@@ -49,48 +49,43 @@
 @endsection
 @push('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        $(document).ready(function() {
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            var cuti = @json($events);
-            var form = document.getElementById('event_entry_modal');
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                themeSystem: 'bootstrap',
-                selectable: true,
 
-                navLinks: true,
-                initialView: 'dayGridMonth',
-                headerToolbar: {
-                    left: 'prev,today,next',
+            var booking = @json($events);
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev, next today',
                     center: 'title',
-                    right: 'dayGridWeek,dayGridMonth,timeGridDay,listWeek' // user can switch between the two
+                    right: 'month, agendaWeek, agendaDay',
                 },
-
-
-                dayMaxEventRows: true, // for all non-TimeGrid views
-                timeGrid: {
-                    dayMaxEventRows: 3 // adjust to 6 only for timeGridWeek/timeGridDay
-                },
-                events: cuti,
+                navLinks: true,
+                events: booking,
+                selectable: true,
+                selectHelper: true,
                 select: function(start, end, allDays) {
+                    console.log(start);
                     $('#event_entry_modal').modal('toggle');
+
                     $('#saveBtn').click(function() {
+                        var start_event = moment(start).format('YYYY-MM-DD');
                         var title = $('#event_name').val();
-                        var start = moment(start).format('YYYY-MM-DD');
-                        var end = moment(end).format('YYYY-MM-DD');
+                        var end_event = moment(end).format('YYYY-MM-DD');
 
                         $.ajax({
-                            url: "{{ route('calendar.store') }}",
+                            url: "{{ route('store.kalender') }}",
                             type: "POST",
                             dataType: 'json',
                             data: {
                                 title,
-                                start,
-                                end
+                                start_event,
+                                end_event
                             },
                             success: function(response) {
                                 $('#event_entry_modal').modal('hide')
@@ -109,11 +104,21 @@
                             },
                         });
                     });
-
                 },
+                editable: true,
+
+
 
             });
-            calendar.render();
+
+
+            $("#event_entry_modal").on("hidden.bs.modal", function() {
+                $('#saveBtn').unbind();
+            });
+
+
+
+
         });
     </script>
 @endpush

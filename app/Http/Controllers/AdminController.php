@@ -34,7 +34,14 @@ class AdminController extends Controller
         }
         return view('admin.kalender.view_kalender', compact('events'));
     }
-    public function storeKalender()  {
+    public function storeKalender(Request $request)
+    {
+        $kalender = Kalender::create([
+            'start' => $request->start_event,
+            'title' => $request->title,
+            'end' => $request->end_event,
+        ]);
+        return response()->json($kalender);
         
     }
 

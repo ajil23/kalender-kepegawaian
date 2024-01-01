@@ -10,4 +10,10 @@ class Kalender extends Model
     use HasFactory;
     protected $table = 'kalender';
     protected $primaryKey = 'id';
+    protected $fillable = [
+       
+        'start',
+        'title',
+        'end',
+    ];
 }
