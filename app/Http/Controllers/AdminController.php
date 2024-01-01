@@ -27,6 +27,7 @@ class AdminController extends Controller
         $events = array();
         foreach ($data as $item) {
             $events[] = [
+                'id' => $item->id,
                 'title' => $item->title,
                 'start' => $item->start,
                 'end' => $item->end,
@@ -43,6 +44,31 @@ class AdminController extends Controller
         ]);
         return response()->json($kalender);
         
+    }
+    public function updatekalender(Request $request ,$id)
+    {
+        $kalender = Kalender::find($id);
+        if(! $kalender) {
+            return response()->json([
+                'error' => 'Unable to locate the event'
+            ], 404);
+        }
+        $kalender->update([
+            'start' => $request->start_event,
+            'end' => $request->end_event,
+        ]);
+        return response()->json('Event updated');
+    }
+    public function kalenderDestroy($id)
+    {
+        $booking = Kalender ::find($id);
+        if(! $booking) {
+            return response()->json([
+                'error' => 'Unable to locate the event'
+            ], 404);
+        }
+        $booking->delete();
+        return $id;
     }
 
     public function settingCuti()
