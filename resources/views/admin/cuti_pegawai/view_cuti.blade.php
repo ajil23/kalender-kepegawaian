@@ -30,14 +30,15 @@
                          </tr>
                      </thead>
                      <tbody>
+                        @foreach ($datacuti as $item => $cuti)
                         <tr>
-                            <td>1</td>
-                            <td>Tiara Nawastu</td>
-                            <td><center>01-12-2023</center></td>
-                            <td><center>21-12-2023</center></td>
-                            <td><center>Cuti Tahunan</center></td>
-                            <td><center>Kepentingan Keluarga</center></td>
-                            <td><center>Diajukan</center></td>
+                            <td>{{$loop->iteration}}</td>
+                            <td><center>{{$cuti->nama}}</center></td>
+                            <td><center>{{$cuti->awal}}</center></td>
+                            <td><center>{{$cuti->akhir}}</center></td>
+                            <td><center>{{$cuti->jenis}}</center></td>
+                            <td><center>{{$cuti->keterangan}}</center></td>
+                            <td><center>{{$cuti->status}}</center></td>
                             <td>
                                 <a href="#" class="btn btn-link">
                                     <button type="button" class="btn btn-info btn-sm">
@@ -47,6 +48,7 @@
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
                      </tbody>
                  </table>
                  <nav aria-label="Page navigation example">

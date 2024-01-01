@@ -18,33 +18,7 @@
              <h6 class="m-0 font-weight-bold text-primary">Tabel Pelaksanaan</h6>
          </div>
          <div class="card-body">
-             <div class="table-responsive">
-                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                     <thead>
-                         <tr>
-                             <th>No</th>
-                             <th>Kegiatan</th>
-                             <th>Progres</th>
-                             <th>Realisasi</th>
-                             <th>Dokumen Laporan</th>
-                             <th>Aksi</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>fd</td>
-                            <td>sdf</td>
-                            <td>Rp. 43</td>
-                            <td>file</td>
-                            <td colspan="2">
-                               <a href="" class="btn btn-warning">Edit</a>
-                               <a href="" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
-                     </tbody>
-                 </table>
-             </div>
+             
          </div>
      </div>
 </div>

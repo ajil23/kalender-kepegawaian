@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Kalender;
 use Illuminate\Http\Request;
+use App\Models\Cuti;
 
 class AdminController extends Controller
 {
     public function pengajuanCuti()
     {
-        return view('admin.cuti_pegawai.view_cuti');
+        $datacuti = Cuti::all();
+        return view('admin.cuti_pegawai.view_cuti', ['datacuti' => $datacuti]);
     }
     public function adminDashboard()
     {
@@ -18,7 +20,8 @@ class AdminController extends Controller
 
     public function rekapitulasiCuti()
     {
-        return view('admin.cuti_pegawai.view_rekapitulasi');
+        $datacuti = Cuti::all();
+        return view('admin.cuti_pegawai.view_rekapitulasi', ['datacuti' => $datacuti]);
     }
 
     public function viewKalender()

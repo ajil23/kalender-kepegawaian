@@ -32,8 +32,9 @@
                      </thead>
                      <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Tiara Nawastu</td>
+                            @foreach ($datacuti as $item => $cuti)
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$cuti->nama}}</td>
                             <td>198403052021212004</td>
                             <td><center>-</center></td>
                             <td><center>-</center></td>
@@ -41,6 +42,7 @@
                             <td><center>-</center></td>
                             <td><center>-</center></td>
                             <td><center>10</center></td>
+                            @endforeach
                         </tr>
                      </tbody>
                  </table>

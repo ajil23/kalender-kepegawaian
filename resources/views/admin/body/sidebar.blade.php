@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
     
     <!-- Nav Item - Dashboard -->
-    <li class="{{'dashboard' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+    <li class="{{'admin/admin_dashboard' == request()->path() ? 'nav-item active' : 'nav-item'}}">
+        <a class="nav-link" href="{{route('admin.dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -31,7 +31,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-solid fa-file"></i>
             <span>Cuti</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -40,20 +40,6 @@
                 <a class="collapse-item" href="{{route('rekapitulasi.view')}}">Rekapitulasi Cuti</a>
             </div>
         </div>
-    </li>
-
-     <hr class="sidebar-divider">
-
-     <!-- Heading -->
-     <div class="sidebar-heading">
-         Kalender Kepegawain
-     </div>
-
-     <!-- Nav Item - Pages Collapse Menu -->
-     <li class="{{'admin/kalender' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="{{route('kalender.view')}}">
-            <i class="fas fa-solid fa-file"></i>
-            <span>Kalender</span></a>
     </li>
      
      <!-- Divider -->
@@ -74,7 +60,7 @@
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
                  <a class="collapse-item" href="{{route('setting.view')}}">Pengaturan Cuti</a>
-                 <a class="collapse-item" href="cards.html">Pengaturan Kalender</a>
+                 <a class="collapse-item" href="{{route('kalender.view')}}">Pengaturan Kalender</a>
              </div>
          </div>
      </li>
