@@ -10,12 +10,16 @@ class AdminController extends Controller
 {
     public function pengajuanCuti()
     {
-        $datacuti = Cuti::all();
+        $datacuti = Cuti::paginate(20);
         return view('admin.cuti_pegawai.view_cuti', ['datacuti' => $datacuti]);
     }
     public function adminDashboard()
     {
         return view('admin.index');
+    }
+
+    public function detail(){
+        return view('admin.cuti_pegawai.view_detail_cuti_pegawai');
     }
 
     public function rekapitulasiCuti()

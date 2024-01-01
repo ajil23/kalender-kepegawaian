@@ -40,7 +40,7 @@
                             <td><center>{{$cuti->keterangan}}</center></td>
                             <td><center>{{$cuti->status}}</center></td>
                             <td>
-                                <a href="#" class="btn btn-link">
+                                <a href="{{route('detail.view')}}" class="btn btn-link">
                                     <button type="button" class="btn btn-info btn-sm">
                                         <i class="fas fa-solid fa-eye"></i>
                                         lihat
