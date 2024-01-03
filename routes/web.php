@@ -45,10 +45,11 @@ Route::group(['prefix' => 'admin', 'middleware' => [
     Route::delete('kalender/destroy/{id}', [AdminController::class, 'kalenderDestroy'])->name('kalender.destroy');  
     Route::get('detail-pengajuan', [AdminController::class, 'detail'])->name('detail.view');
 });
-Route::group(['prefix' => 'pegawai', 'middleware' => [
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-]], function(){
-    Route::get('pegawai_dashboard', [PegawaiController::class, 'pegawaiDashboard'])->name('pegawai.dashboard');
+
+Route::group(['prefix' => 'pegawai'], function(){
+    Route::get('pegawai_dashboard', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
+    Route::get('kalender', [PegawaiController::class, 'viewKalender'])->name('kalenderpegawai.view');
+    Route::get('pengajuan', [PegawaiController::class, 'viewPengajuan'])->name('cuti.view');
+    Route::get('pengajuan/add', [PegawaiController::class, 'addPengajuan'])->name('cuti.add');
+
 });
