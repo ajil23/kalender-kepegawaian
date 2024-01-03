@@ -7,14 +7,14 @@
                 <h1 class="h3 mb-2 text-gray-800">Pengaturan Kalender</h1>
             </div>
         </div>
-
+        {{-- awalkalender --}}
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-
             <div class="card-body">
                 <div id="calendar"></div>
             </div>
         </div>
+        {{-- kalender --}}
         <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-md" role="document">
@@ -105,6 +105,7 @@
                         });
                     });
                 },
+                // batas
                 editable: true,
                 eventDrop: function(event) {
                     var id = event.id;
