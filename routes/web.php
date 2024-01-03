@@ -30,7 +30,11 @@ Route::middleware([
 
 
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => [
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+]], function(){
     Route::get('admin_dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('pengajuan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
     Route::get('rekapitulasi', [AdminController::class, 'rekapitulasiCuti'])->name('rekapitulasi.view');
@@ -47,4 +51,5 @@ Route::group(['prefix' => 'pegawai'], function(){
     Route::get('kalender', [PegawaiController::class, 'viewKalender'])->name('kalenderpegawai.view');
     Route::get('pengajuan', [PegawaiController::class, 'viewPengajuan'])->name('cuti.view');
     Route::get('pengajuan/add', [PegawaiController::class, 'addPengajuan'])->name('cuti.add');
+
 });
