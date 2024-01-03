@@ -5,15 +5,14 @@
      <!-- Page Heading -->
      <div class="row">
         <div class="col">
-            <h1 class="h3 mb-2 text-gray-800"> Pengajuan Cuti Pribadi</h1>
+            <h1 class="h3 mb-2 text-gray-800">Rekapitulasi Pengajuan Cuti</h1>
         </div>
     </div>
 
      <!-- DataTales Example -->
-     <div class="card shadow mb-4 ">
-         <div class="card-header py-3 row">
-             <h6 class="m-0 font-weight-bold text-primary col">Tabel Cuti Pribadi</h6>
-             <a href="{{route('add_cutipribadi_atasan.add')}}" class="btn btn-success co">Add Cuti Pribadi</a>
+     <div class="card shadow mb-4">
+         <div class="card-header py-3">
+             <h6 class="m-0 font-weight-bold text-primary">Tabel Rekapitulasi</h6>
          </div>
          <div class="card-body">
              <div class="table-responsive">

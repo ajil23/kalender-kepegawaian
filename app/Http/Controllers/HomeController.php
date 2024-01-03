@@ -21,7 +21,7 @@ class HomeController extends Controller
      
 
         if (auth()->user()->hasRole('pegawai')) {
-            return redirect()->route('user.home');
+            return redirect()->route('pegawai.dashboard');
         }
     }
 }

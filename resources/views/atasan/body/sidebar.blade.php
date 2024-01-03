@@ -27,7 +27,7 @@
     </div>
 
     <li class="{{'report/view' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('cutipribadi_atasan.view')}}">
             <i class="fas fa-solid fa-file"></i>
             <span>Pengajuan Cuti Pribadi</span></a>
     </li>
@@ -50,7 +50,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="buttons.html">Pengajuan Cuti Pegawai</a>
-                <a class="collapse-item" href="cards.html">Rekapitulasi Cuti Pegawai</a>
+                <a class="collapse-item" href="{{route('rekapitulasi_atasan.view')}}">Rekapitulasi Cuti Pegawai</a>
             </div>
         </div>
     </li>
