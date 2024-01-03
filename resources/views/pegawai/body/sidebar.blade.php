@@ -14,7 +14,7 @@
     
     <!-- Nav Item - Dashboard -->
     <li class="{{'dashboard' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('pegawai.dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -27,18 +27,10 @@
         Cuti
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Cuti</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Pengajuan Cuti</a>
-            </div>
-        </div>
+    <li class="{{'pegawai/pengajuan' == request()->path() ? 'nav-item active' : 'nav-item'}}">
+        <a class="nav-link" href="{{route('cuti.view')}}">
+            <i class="fas fa-solid fa-file"></i>
+            <span>Pengajuan Cuti</span></a>
     </li>
 
      <hr class="sidebar-divider">
@@ -49,8 +41,8 @@
      </div>
 
      <!-- Nav Item - Pages Collapse Menu -->
-     <li class="{{'report/view' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+     <li class="{{'pegawai/kalender' == request()->path() ? 'nav-item active' : 'nav-item'}}">
+        <a class="nav-link" href="{{route('kalenderpegawai.view')}}">
             <i class="fas fa-solid fa-file"></i>
             <span>Kalender</span></a>
     </li>

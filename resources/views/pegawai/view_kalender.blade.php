@@ -1,51 +1,75 @@
 @extends('pegawai.pegawai_master')
 @section('pegawai')
-
-<div class="container-fluid">
-     <!-- Page Heading -->
-     <div class="row">
-        <div class="col">
-            <h1 class="h3 mb-2 text-gray-800">Pengaturan Cuti</h1>
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col">
+                <h1 class="h3 mb-2 text-gray-800">Kalender</h1>
+            </div>
         </div>
-        <div class="text-end mb-2">
-            <a href="#"><button type="button" class="btn btn-primary">Pengajuan Cuti</button></a>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+        <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Event</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="img-container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="event_name">Event name</label>
+                                        <input type="text" name="event_name" id="event_name" class="form-control"
+                                            placeholder="Enter your event name">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveBtn">Save Event</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-     <!-- DataTales Example -->
-     <div class="card shadow mb-4">
-         <div class="card-header py-3">
-             <h6 class="m-0 font-weight-bold text-primary">Tabel Pelaksanaan</h6>
-         </div>
-         <div class="card-body">
-             <div class="table-responsive">
-                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                     <thead>
-                         <tr>
-                             <th>No</th>
-                             <th>Kegiatan</th>
-                             <th>Progres</th>
-                             <th>Realisasi</th>
-                             <th>Dokumen Laporan</th>
-                             <th>Aksi</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>fd</td>
-                            <td>sdf</td>
-                            <td>Rp. 43</td>
-                            <td>file</td>
-                            <td colspan="2">
-                               <a href="" class="btn btn-warning">Edit</a>
-                               <a href="" class="btn btn-danger">Hapus</a>
-                            </td>
-                        </tr>
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-     </div>
-</div>
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function() {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var booking = @json($events);
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev, next today',
+                    center: 'title',
+                    right: 'month, agendaWeek, agendaDay',
+                },
+                navLinks: true,
+                events: booking,
+                selectable: true,
+                selectHelper: true,
+            });
+        });
+    </script>
+@endpush
