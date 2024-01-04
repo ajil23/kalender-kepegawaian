@@ -27,4 +27,9 @@ class AtasanController extends Controller
        
         return view('atasan.cuti_pribadi.add_cuti_pribadi');
     }
+    public function storeCutiPribadi(Request $request)
+    {
+       $cutipribadi = new Cuti();
+       
+    }
 }

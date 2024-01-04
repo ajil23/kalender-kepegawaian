@@ -16,6 +16,10 @@ class UserSeeder extends Seeder
         $atasan = User::create([
             'name' =>'atasan',
             'email' => 'atasan@gmail.com',
+            'nip' => '18401347509175',
+            'golongan' => 'IIC',
+            'jabatan' => 'Kepala Program Studi',
+            'unitkerja' => 'Bisnis dan Informatika',
             'role' => '2',
             'password' => bcrypt('atasan123'),
         ]);
@@ -23,6 +27,10 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' =>'admin',
             'email' => 'admin@gmail.com',
+            'nip' => '18401347509175',
+            'golongan' => 'IIC',
+            'jabatan' => 'Kepala Program Studi',
+            'unitkerja' => 'Bisnis dan Informatika',
             'role' => '1',
             'password' => bcrypt('admin123'),
         ]);
@@ -31,6 +39,10 @@ class UserSeeder extends Seeder
        $pegawai = User::create([
             'name' =>'pegawai',
             'email' => 'user@gmail.com',
+            'nip' => '18401347509175',
+            'golongan' => 'IIC',
+            'jabatan' => 'Kepala Program Studi',
+            'unitkerja' => 'Bisnis dan Informatika',
             'password' => bcrypt('user123'),
         ]);
         $pegawai->assignRole('pegawai');

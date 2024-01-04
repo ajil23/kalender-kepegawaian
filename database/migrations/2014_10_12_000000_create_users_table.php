@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('role')->default(0);  // pegawai = 0, admin = 1, atasan = 2
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('nip');
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('golongan');
+            $table->string('jabatan');
+            $table->string('unitkerja');
             $table->timestamps();
         });
     }

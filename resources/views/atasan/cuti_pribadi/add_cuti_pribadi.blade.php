@@ -1,6 +1,5 @@
-@extends('admin.admin_master')
-@section('admin')
-
+@extends('atasan.atasan_master')
+@section('atasan')
 <div class="container-fluid">
      <!-- Page Heading -->
      <div class="row">
@@ -25,15 +24,15 @@
                             <center>Identitas Pegawai</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{Auth::user()->name}}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{Auth::user()->nip}}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{Auth::user()->golongan}}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{Auth::user()->jabatan}}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja : {{Auth::user()->unitkerja}}
                         </div>
                     </div>
                 </div>
@@ -43,15 +42,15 @@
                             <center>Identitas Atasan</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{Auth::user()->name}}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{Auth::user()->nip}}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{Auth::user()->golongan}}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{Auth::user()->jabatan}}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja : {{Auth::user()->unitkerja}}
                         </div>
                     </div>
                 </div>
