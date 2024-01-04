@@ -47,12 +47,19 @@ Route::group(['prefix' => 'admin', 'middleware' => [
     Route::get('detail-pengajuan', [AdminController::class, 'detail'])->name('detail.view');
 });
 
-Route::group(['prefix' => 'pegawai'], function(){
+Route::group(['prefix' => 'pegawai', 'middleware' => [
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+]], function(){
     Route::get('pegawai_dashboard', [PegawaiController::class, 'index'])->name('pegawai.dashboard');
     Route::get('kalender', [PegawaiController::class, 'viewKalender'])->name('kalenderpegawai.view');
     Route::get('pengajuan', [PegawaiController::class, 'viewPengajuan'])->name('cuti.view');
     Route::get('pengajuan/add', [PegawaiController::class, 'addPengajuan'])->name('cuti.add');
-
+    Route::post('pengajuan/store', [PegawaiController::class, 'store'])->name('cuti.store');
+    Route::get('pengajuan/edit{id}', [PegawaiController::class, 'edit'])->name('cuti.edit');
+    Route::post('pengajuan/update{id}', [PegawaiController::class, 'update'])->name('cuti.update');
+    Route::get('pengajuan/delete{id}', [PegawaiController::class, 'delete'])->name('cuti.delete');
 });
 Route::group(['prefix' => 'atasan', 'middleware' => [
     'auth:sanctum',
