@@ -33,25 +33,31 @@
                          </tr>
                      </thead>
                      <tbody>
+                        @foreach ($data as $item)
                         <tr>
-                            <td>1</td>
-                            <td><center>as</center></td>
-                            <td><center>gadfg</center></td>
-                            <td><center>grarg</center></td>
-                            <td><center>gad</center></td>
-                            <td><center>gae</center></td>
-                            <td><center>ad</center></td>
-                            <td>
-                                <center>
-                                    <a href="#" class="btn btn-link">
+                            <td>{{$loop->iteration}}</td>
+                            <td><center>{{$item->user->name}}</center></td>
+                            <td><center>{{$item->awal}}</center></td>
+                            <td><center>{{$item->akhir}}</center></td>
+                            <td><center>{{$item->jenis}}</center></td>
+                            <td><center>{{$item->keterangan}}</center></td>
+                            <td><center>{{$item->status}}</center></td>
+                            <td colspan="2">
+                                   <center>
+                                    <a href="{{route('cuti.edit', $item->id)}}" class="btn btn-link">
                                         <button type="button" class="btn btn-info btn-sm">
-                                            <i class="fas fa-solid fa-eye"></i>
-                                            Edit
+                                            <i class="fas fa-solid fa-pen"></i>                                        
                                         </button>
                                     </a>
-                                </center>
+                                    <a href="{{route('cuti.delete', $item->id)}}" class="btn btn-link">
+                                        <button type="button" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-solid fa-trash"></i>
+                                        </button>
+                                    </a>
+                                   </center>
                             </td>
                         </tr>
+                        @endforeach
                      </tbody>
                  </table>
                  <nav aria-label="Page navigation example">
