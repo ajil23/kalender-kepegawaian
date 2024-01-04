@@ -29,7 +29,7 @@
 
     <li class="{{'pegawai/pengajuan' == request()->path() ? 'nav-item active' : 'nav-item'}}">
         <a class="nav-link" href="{{route('cuti.view')}}">
-            <i class="fas fa-solid fa-file"></i>
+            <i class="fas fa-solid fa-envelope"></i>
             <span>Pengajuan Cuti</span></a>
     </li>
 
@@ -43,7 +43,7 @@
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="{{'pegawai/kalender' == request()->path() ? 'nav-item active' : 'nav-item'}}">
         <a class="nav-link" href="{{route('kalenderpegawai.view')}}">
-            <i class="fas fa-solid fa-file"></i>
+            <i class="fas fa-calendar"></i>
             <span>Kalender</span></a>
     </li>
     

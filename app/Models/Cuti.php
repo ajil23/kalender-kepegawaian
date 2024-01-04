@@ -12,4 +12,9 @@ class Cuti extends Model
     protected $table = "cuti";
     protected $primaryKey = 'id';
     protected $fillable = ['nama', 'awal', 'akhir', 'jenis', 'keterangan', 'status'];
+
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
