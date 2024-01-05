@@ -76,4 +76,6 @@ Route::group(['prefix' => 'atasan', 'middleware' => [
     Route::get('pengajuan_atasan/edit{id}', [AtasanController::class, 'edit'])->name('atasancuti.edit');
     Route::post('pengajuan_atasan/update{id}', [AtasanController::class, 'update'])->name('atasancuti.update');
     Route::get('pengajuan_atasan/delete{id}', [AtasanController::class, 'delete'])->name('atasancuti.delete');
+    Route::get('kalender', [AtasanController::class, 'viewKalender'])->name('kalenderatasan.view');
+    Route::get('cutipegawai', [AtasanController::class, 'cutiPegawai'])->name('cutipegawai.view');
 });
