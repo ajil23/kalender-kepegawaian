@@ -48,7 +48,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <center>{{ $item->user->name }}</center>
+                                        <center>{{ $item->nama }}</center>
                                     </td>
                                     <td>
                                         <center>{{ $item->awal }}</center>

@@ -8,17 +8,30 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
-
+            <div class="mt-4">
+                <x-label for="nip" value="{{ __('NIP/NIPPPK') }}" />
+                <x-input id="nip" class="block mt-1 w-full" type="text" name="nip" required  />
+            </div>
+            <div class="mt-4">
+                <x-label for="Golongan " value="{{ __('Golongan ') }}" />
+                <x-input id="Golongan " class="block mt-1 w-full" type="text" name="golongan " required />
+            </div>
+            <div class="mt-4">
+                <x-label for="jabatan " value="{{ __('Jabatan ') }}" />
+                <x-input id="jabatan " class="block mt-1 w-full" type="text" name="jabatan " required />
+            </div>
+            <div class="mt-4">
+                <x-label for="unitkerja " value="{{ __('Unit Kerja') }}" />
+                <x-input id="unitkerja " class="block mt-1 w-full" type="text" name="unitkerja " required />
+            </div>
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />

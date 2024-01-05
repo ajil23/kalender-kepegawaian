@@ -49,7 +49,7 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $cuti = new Cuti();
-        $cuti->nama = Auth()->id();
+        $cuti->nama = Auth::user()->name;
         $cuti->user_id = Auth()->id();
         $cuti->awal = $request->awal;
         $cuti->akhir = $request->akhir;
