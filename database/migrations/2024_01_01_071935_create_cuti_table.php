@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('akhir');
             $table->string('jenis');
             $table->string('keterangan');
+            $table->unsignedBigInteger('hubungan_id');
+            $table->foreign('hubungan_id')->references('id')->on('hubungan')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->default('Diajukan');
             $table->timestamps();
         });

@@ -25,15 +25,15 @@
                             <center>Identitas Pegawai</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{$datapegwains->datapegawai->name}}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{$datapegwains->datapegawai->nip}}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{$datapegwains->datapegawai->golongan}}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{$datapegwains->datapegawai->jabatan}}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja :  {{$datapegwains->datapegawai->unitkerja}}
                         </div>
                     </div>
                 </div>
@@ -43,15 +43,15 @@
                             <center>Identitas Atasan</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{$dataatasans->dataatasan->name}}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{$dataatasans->dataatasan->nip}}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{$dataatasans->dataatasan->golongan}}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{$dataatasans->dataatasan->jabatan}}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja : {{$dataatasans->dataatasan->unitkerja}}
                         </div>
                     </div>
                 </div>
@@ -89,6 +89,10 @@
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Keterangan Cuti</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Keterangan Cuti" name="keterangan">
+                </div>  
+                <div class="mb-3" hidden>
+                    <label for="formGroupExampleInput" class="form-label">idhubungan</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Keterangan Cuti" name="id_hubungan" readonly value="{{$dataatasans->id}}">
                 </div>  
                 <button type="submit" class="btn btn-primary">Ajukan</button>
                 <button type="button" onclick="history.back()" class="btn btn-danger">Batal</button>

@@ -60,6 +60,7 @@ Route::group(['prefix' => 'pegawai', 'middleware' => [
     Route::get('pengajuan/edit{id}', [PegawaiController::class, 'edit'])->name('cuti.edit');
     Route::post('pengajuan/update{id}', [PegawaiController::class, 'update'])->name('cuti.update');
     Route::get('pengajuan/delete{id}', [PegawaiController::class, 'delete'])->name('cuti.delete');
+    Route::post('pengajuan_atasan/store_hubungan', [PegawaiController::class, 'storeHubungan'])->name('hubungan.store');
 });
 Route::group(['prefix' => 'atasan', 'middleware' => [
     'auth:sanctum',
@@ -70,6 +71,7 @@ Route::group(['prefix' => 'atasan', 'middleware' => [
     Route::get('rekapitulasi_atasan', [AtasanController::class, 'rekapitulasiCuti'])->name('rekapitulasi_atasan.view');
     Route::get('cuti_pribadi', [AtasanController::class, 'cutiPribadi'])->name('cutipribadi_atasan.view');
     Route::get('pengajuan/add', [AtasanController::class, 'addCutiPribadi'])->name('add_cutipribadi_atasan.add');
+    
     Route::post('pengajuan_atasan/store', [AtasanController::class, 'store'])->name('atasancuti.store');
     Route::get('pengajuan_atasan/edit{id}', [AtasanController::class, 'edit'])->name('atasancuti.edit');
     Route::post('pengajuan_atasan/update{id}', [AtasanController::class, 'update'])->name('atasancuti.update');
