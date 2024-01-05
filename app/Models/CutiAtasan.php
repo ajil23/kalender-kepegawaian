@@ -10,4 +10,7 @@ class CutiAtasan extends Model
     use HasFactory;
     protected $table = "cutiatasan";
     protected $primaryKey = 'id';
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Kalender;
 use Illuminate\Http\Request;
 use App\Models\Cuti;
+use App\Models\CutiAtasan;
+use PhpParser\Node\Expr\Cast\String_;
 
 class AdminController extends Controller
 {
@@ -13,6 +15,18 @@ class AdminController extends Controller
         $datacuti = Cuti::paginate(20);
         return view('admin.cuti_pegawai.view_cuti', ['datacuti' => $datacuti]);
     }
+    public function pengajuanCutiAtasan()
+    {
+        $datacuti = CutiAtasan::all();
+        return view('admin.cuti_atasan.view_cuti_atasan', ['datacuti' => $datacuti]);
+    }
+    public function validAtasan(string $id)
+    {
+        $datacuti = CutiAtasan::find($id);
+        $datacuti->status = "Disetujui";
+        $datacuti->update();
+        return redirect()->route('pengajuan_atasan.view');
+    }
     public function adminDashboard()
     {
         return view('admin.index');
@@ -20,6 +34,10 @@ class AdminController extends Controller
 
     public function detail(){
         return view('admin.cuti_pegawai.view_detail_cuti_pegawai');
+    }
+    public function detailAtasan($id){
+        $data = CutiAtasan::find($id);
+        return view('admin.cuti_atasan.view_detail_cuti_atasan',compact('data'));
     }
 
     public function rekapitulasiCuti()

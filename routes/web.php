@@ -37,7 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => [
     'verified',
 ]], function(){
     Route::get('admin_dashboard', [AdminController::class, 'adminDashboard'])->name('admin.dashboard');
-    Route::get('pengajuan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
+    Route::get('pengajuan', [AdminController::class, 'pengajuanCutiAtasan'])->name('pengajuan_atasan.view');
+    Route::get('pengajuan_atasan', [AdminController::class, 'pengajuanCuti'])->name('pengajuan.view');
     Route::get('rekapitulasi', [AdminController::class, 'rekapitulasiCuti'])->name('rekapitulasi.view');
     Route::get('kalender', [AdminController::class, 'viewKalender'])->name('kalender.view');
     Route::get('setting/cuti', [AdminController::class, 'settingCuti'])->name('setting.view');
@@ -45,6 +46,8 @@ Route::group(['prefix' => 'admin', 'middleware' => [
     Route::patch('kalender/update/{id}', [AdminController::class, 'updatekalender'])->name('kalender.update');
     Route::delete('kalender/destroy/{id}', [AdminController::class, 'kalenderDestroy'])->name('kalender.destroy');  
     Route::get('detail-pengajuan', [AdminController::class, 'detail'])->name('detail.view');
+    Route::get('detail-pengajuan_atasan/{id}', [AdminController::class, 'detailAtasan'])->name('detail_atasan.view');
+    Route::post('detail-pengajuan_atasan/valid/{id}', [AdminController::class, 'validAtasan'])->name('validAtasan.store');
 });
 
 Route::group(['prefix' => 'pegawai', 'middleware' => [

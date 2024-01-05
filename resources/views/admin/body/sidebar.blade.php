@@ -36,7 +36,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('pengajuan.view')}}">Pengajuan Cuti</a>
+                <a class="collapse-item" href="{{route('pengajuan.view')}}">Pengajuan Cuti Pegawai</a>
+                <a class="collapse-item" href="{{route('pengajuan_atasan.view')}}">Pengajuan Cuti Atasan</a>
                 <a class="collapse-item" href="{{route('rekapitulasi.view')}}">Rekapitulasi Cuti</a>
             </div>
         </div>
