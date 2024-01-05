@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('keterangan');
             $table->string('status')->default('Diajukan');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

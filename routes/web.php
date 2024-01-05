@@ -69,5 +69,9 @@ Route::group(['prefix' => 'atasan', 'middleware' => [
     Route::get('atasan_dashboard', [AtasanController::class, 'atasanDashboard'])->name('atasan.dashboard');
     Route::get('rekapitulasi_atasan', [AtasanController::class, 'rekapitulasiCuti'])->name('rekapitulasi_atasan.view');
     Route::get('cuti_pribadi', [AtasanController::class, 'cutiPribadi'])->name('cutipribadi_atasan.view');
-    Route::get('add_cuti_pribadi', [AtasanController::class, 'addCutiPribadi'])->name('add_cutipribadi_atasan.add');
+    Route::get('pengajuan/add', [AtasanController::class, 'addCutiPribadi'])->name('add_cutipribadi_atasan.add');
+    Route::post('pengajuan_atasan/store', [AtasanController::class, 'store'])->name('atasancuti.store');
+    Route::get('pengajuan_atasan/edit{id}', [AtasanController::class, 'edit'])->name('atasancuti.edit');
+    Route::post('pengajuan_atasan/update{id}', [AtasanController::class, 'update'])->name('atasancuti.update');
+    Route::get('pengajuan_atasan/delete{id}', [AtasanController::class, 'delete'])->name('atasancuti.delete');
 });
