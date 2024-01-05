@@ -5,17 +5,14 @@
      <!-- Page Heading -->
      <div class="row">
         <div class="col">
-            <h1 class="h3 mb-2 text-gray-800">Pengaturan Cuti</h1>
-        </div>
-        <div class="text-end mb-2">
-            <a href="#"><button type="button" class="btn btn-primary">Pengajuan Cuti</button></a>
+            <h1 class="h3 mb-2 text-gray-800">Daftar Pengajuan Cuti Pegawai</h1>
         </div>
     </div>
 
      <!-- DataTales Example -->
      <div class="card shadow mb-4">
          <div class="card-header py-3">
-             <h6 class="m-0 font-weight-bold text-primary">Tabel Pelaksanaan</h6>
+             <h6 class="m-0 font-weight-bold text-primary">Tabel Pengajuan Cuti</h6>
          </div>
          <div class="card-body">
              <div class="table-responsive">
@@ -23,27 +20,50 @@
                      <thead>
                          <tr>
                              <th>No</th>
-                             <th>Kegiatan</th>
-                             <th>Progres</th>
-                             <th>Realisasi</th>
-                             <th>Dokumen Laporan</th>
-                             <th>Aksi</th>
+                             <th><center>Nama</center></th>
+                             <th><center>Tanggal Awal</center></th>
+                             <th><center>Tanggal Akhir</center></th>
+                             <th><center>Jenis Cuti</center></th>
+                             <th><center>Keterangan</center></th>
+                             <th><center>Status</center></th>
+                             <th><center>Aksi</center></th>
                          </tr>
                      </thead>
                      <tbody>
+                        @foreach ($datacuti as $item => $cuti)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>fd</td>
-                            <td>sdf</td>
-                            <td>Rp. 43</td>
-                            <td>file</td>
-                            <td colspan="2">
-                               <a href="" class="btn btn-warning">Edit</a>
-                               <a href="" class="btn btn-danger">Hapus</a>
+                            <td><center>{{$cuti->nama}}</center></td>
+                            <td><center>{{$cuti->awal}}</center></td>
+                            <td><center>{{$cuti->akhir}}</center></td>
+                            <td><center>{{$cuti->jenis}}</center></td>
+                            <td><center>{{$cuti->keterangan}}</center></td>
+                            <td><center>{{$cuti->status}}</center></td>
+                            <td>
+                                <a href="{{route('detail.view')}}" class="btn btn-link">
+                                    <button type="button" class="btn btn-info btn-sm">
+                                        <i class="fas fa-solid fa-eye"></i>
+                                        lihat
+                                    </button>
+                                </a>
                             </td>
                         </tr>
+                        @endforeach
                      </tbody>
                  </table>
+                 <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                      <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                      </li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
              </div>
          </div>
      </div>
