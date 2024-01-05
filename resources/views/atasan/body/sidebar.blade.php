@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
     
     <!-- Nav Item - Dashboard -->
-    <li class="{{'dashboard' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
+    <li class="{{'atasan/atasan_dashboard' == request()->path() ? 'nav-item active' : 'nav-item'}}">
+        <a class="nav-link" href="{{route('atasan.dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -49,7 +49,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Pengajuan Cuti Pegawai</a>
+                <a class="collapse-item" href="{{route('cutipegawai.view')}}">Pengajuan Cuti Pegawai</a>
                 <a class="collapse-item" href="{{route('rekapitulasi_atasan.view')}}">Rekapitulasi Cuti Pegawai</a>
             </div>
         </div>
@@ -62,9 +62,9 @@
          Kalender
      </div>
 
-     <li class="{{'report/view' == request()->path() ? 'nav-item active' : 'nav-item'}}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-solid fa-file"></i>
+     <li class="{{'atasan/kalender' == request()->path() ? 'nav-item active' : 'nav-item'}}">
+        <a class="nav-link" href="{{route('kalenderatasan.view')}}">
+            <i class="fas fa-calendar"></i>
             <span>Kalender</span></a>
     </li>
     

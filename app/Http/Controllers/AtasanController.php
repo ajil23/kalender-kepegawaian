@@ -6,6 +6,7 @@ use App\Models\Cuti;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kalender;
 
 class AtasanController extends Controller
 {
@@ -63,5 +64,24 @@ class AtasanController extends Controller
         $cuti -> keterangan= $request ->keterangan;
         $cuti -> update();
         return redirect()->route('cutipribadi_atasan.view');
+    }
+
+    public function viewkalender(){
+        $data = Kalender::all();
+        $events = array();
+        foreach ($data as $item) {
+            $events[] = [
+                'id' => $item->id,
+                'title' => $item->title,
+                'start' => $item->start,
+                'end' => $item->end,
+            ];
+        }
+        return view('atasan.view_kalender', compact('events'));
+    }
+
+    public function cutiPegawai(){
+        $datacuti = Cuti::all();
+        return view('atasan.cuti_pegawai.view_cuti_pegawai', ['datacuti' => $datacuti]); 
     }
 }
