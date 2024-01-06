@@ -101,13 +101,24 @@
                         placeholder="Keterangan Cuti" disabled>
                 </div>
 
-                <div class="d-flex">
-                    <form action="{{ route('validAtasan.store', $data->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Valid</button>
-                    </form>
-                    <a href="#"  class="mx-2"><button type="button" class="  btn btn-danger">Tidak Valid</button></a>
-                </div>
+                @if ($data->alasanvalid)
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Alasan Valid</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput"
+                            value="{{ $data->alasanvalid }}" placeholder="Keterangan Cuti" disabled>
+                    </div>
+                @endif
+
+                @if ($data->status == 'Diajukan')
+                    <div class="d-flex">
+                        <form action="{{ route('validAtasan.store', $data->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Valid</button>
+                        </form>
+                        <a href="{{ route('tidak_valid.view', $data->id) }}" class="mx-2"><button type="button"
+                                class="  btn btn-danger">Tidak Valid</button></a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

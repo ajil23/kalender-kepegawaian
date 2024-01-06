@@ -67,10 +67,10 @@
                                                 <button class="btn btn-info">Diajukan</button>
                                             @elseIf($cuti->status == 'ditolak')
                                                 <button class="btn btn-danger">ditolak</button>
-                                            @elseIf($cuti->status == 'Disetujui')
+                                            @elseIf($cuti->status == 'disetujui')
                                                 <button class="btn btn-success">Disetujui</button>
-                                            @elseIf($cuti->status == 'valid')
-                                                <button class="btn btn-warning">valid</button>
+                                            @elseIf($cuti->status == 'diproses')
+                                                <button class="btn btn-warning">diproses</button>
                                             @else
                                                 <button class="btn btn-danger">tidak valid</button>
                                             @endif
@@ -78,11 +78,14 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('detail_atasan.view', $cuti->id) }}" class="btn btn-link">
+
                                             <button type="button" class="btn btn-info btn-sm">
                                                 <i class="fas fa-solid fa-eye"></i>
-                                                lihat
+                                                Lihat
                                             </button>
+
                                         </a>
+
                                     </td>
                                 </tr>
                             @endforeach

@@ -2,38 +2,40 @@
 @section('admin')
 
 <div class="container-fluid">
-     <!-- Page Heading -->
-     <div class="row">
+    <!-- Page Heading -->
+    <div class="row">
         <div class="col">
             <h1 class="h3 mb-2 text-gray-800">Form Validasi</h1>
         </div>
         {{-- <div class="text-end mb-2">
-            <a href="#"><button type="button" class="btn btn-primary">Tambah Pelaksanaan</button></a>
-        </div> --}}
+        <a href="#"><button type="button" class="btn btn-primary">Tambah Pelaksanaan</button></a>
+    </div> --}}
     </div>
 
-     <!-- DataTales Example -->
-     <div class="card shadow mb-4">
-         <div class="card-header py-3">
-             <h6 class="m-0 font-weight-bold text-primary"><center>Informasi Pegawai</center></h6>
-         </div>
-         <div class="card-body">
-             <div class="row">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <center>Informasi Pegawai</center>
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
                 <div class="col-xl col-md-6 mb-4">
                     <div class="col mr-2">
                         <div class="h6 font-weight-bold text-gray-800 mb-1">
                             <center>Identitas Pegawai</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{ $data->user->name }}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{ $data->user->nip }}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{ $data->user->golongan }}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{ $data->user->jabatan }}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja : {{ $data->user->unitkerja }}
                         </div>
                     </div>
                 </div>
@@ -43,39 +45,42 @@
                             <center>Identitas Atasan</center>
                         </div>
                         <div class="text-small mb-0 text-gray-800">
-                            Nama : Dianni Yusuf. S.Kom., M.Kom.
+                            Nama : {{ $data->hubungan->dataatasan->name }}
                             <br>
-                            NIP/NIPPPK : 18401347509175
+                            NIP/NIPPPK : {{ $data->hubungan->dataatasan->nip }}
                             <br>
-                            Golongan : IIC
+                            Golongan : {{ $data->hubungan->dataatasan->golongan }}
                             <br>
-                            Jabatan : Kepala Program Studi
+                            Jabatan : {{ $data->hubungan->dataatasan->jabatan }}
                             <br>
-                            Unit Kerja : Bisnis dan Informatika
+                            Unit Kerja : {{ $data->hubungan->dataatasan->unitkerja }}
                         </div>
                     </div>
                 </div>
-             </div>
-         </div>
-     </div>
-     <div class="card shadow mb-4">
+            </div>
+        </div>
+    </div>
+    <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><center>Informasi Cuti</center></h6>
+            <h6 class="m-0 font-weight-bold text-primary">
+                <center>Informasi Cuti</center>
+            </h6>
         </div>
         <div class="card-body">
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Jenis Cuti</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Cuti" disabled>
-            </div>              
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Jenis Cuti"
+                    value="{{ $data->jenis }}" disabled>
+            </div>
             <div class="mb-3">
                 <div class="row">
                     <div class="col">
                         <label for="mulai">Tanggal Mulai</label>
-                        <input type="date" class="form-control" disabled>
+                        <input type="date" class="form-control" value="{{ $data->awal }}" disabled>
                     </div>
                     <div class="col">
                         <label for="akhir">Tanggal Akhir</label>
-                        <input type="date" class="form-control" disabled>
+                        <input type="date" class="form-control" value="{{ $data->akhir }}" disabled>
                     </div>
                 </div>
             </div>
@@ -83,7 +88,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="status">Status</label>
-                        <input type="text" class="form-control" disabled>
+                        <input type="text" class="form-control" value="{{ $data->status }}" disabled>
                     </div>
                     <div class="col">
                         <label for="Jumlah">Jumlah Hari Cuti</label>
@@ -93,10 +98,28 @@
             </div>
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Keterangan Cuti</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Keterangan Cuti" disabled>
-            </div>  
-            <a href="#"><button type="button" class="btn btn-primary">Valid</button></a>
-            <a href="#"><button type="button" class="btn btn-danger">Tidak Valid</button></a>
+                <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $data->keterangan }}"
+                    placeholder="Keterangan Cuti" disabled>
+            </div>
+
+            @if ($data->alasanvalid)
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Alasan Valid</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput"
+                        value="{{ $data->alasanvalid }}" placeholder="Keterangan Cuti" disabled>
+                </div>
+            @endif
+
+            @if ($data->status == 'diproses')
+                <div class="d-flex">
+                    <form action="{{ route('admin.validPegawai.store', $data->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Valid</button>
+                    </form>
+                    <a href="{{ route('admin.tidak_valid_pegawai.view', $data->id) }}" class="mx-2"><button type="button"
+                            class="  btn btn-danger">Tidak Valid</button></a>
+                </div>
+            @endif
         </div>
     </div>
 </div>

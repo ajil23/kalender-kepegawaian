@@ -88,5 +88,30 @@ class AtasanController extends Controller
         })->get();
         return view('atasan.cuti_pegawai.view_cuti_pegawai', compact('datacuti')); 
     }
-    
+
+    public function detailCutiPegawai($id){
+        $data = Cuti::with('user', 'hubungan')->find($id);
+        return view('atasan.cuti_pegawai.view_detail_cuti_pegawai', compact('data')); 
+    }
+    public function viewTidakValidPegawai($id)
+    {
+        $data = Cuti::find($id);
+        return view('atasan.cuti_pegawai.view_form_tidak_setuju',compact('data'));
+    }
+    public function validPegawai(string $id)
+    {
+        $datacuti = Cuti::find($id);
+        $datacuti->status = "diproses";
+        $datacuti->update();
+        return redirect()->route('cutipegawai.view');
+    }
+    public function storeTidakValid(Request $request,$id)
+    {
+        $data = Cuti::find($id);
+        $data->alasanvalid = $request->alasanvalid;
+        $data->status = 'tidakvalid';
+        $data->update();
+        return redirect()->route('pengajuan_atasan.view');
+    }
+   
 }

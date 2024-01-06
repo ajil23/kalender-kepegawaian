@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('hubungan_id');
             $table->foreign('hubungan_id')->references('id')->on('hubungan')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->default('Diajukan');
+            $table->text('alasanvalid')->nullable();
             $table->timestamps();
         });
     }

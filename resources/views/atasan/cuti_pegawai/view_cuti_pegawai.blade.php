@@ -38,9 +38,21 @@
                             <td><center>{{$cuti->akhir}}</center></td>
                             <td><center>{{$cuti->jenis}}</center></td>
                             <td><center>{{$cuti->keterangan}}</center></td>
-                            <td><center>{{$cuti->status}}</center></td>
+                            <td> <center>
+                                @if ($cuti->status == 'Diajukan')
+                                    <button class="btn btn-info">Diajukan</button>
+                                @elseIf($cuti->status == 'ditolak')
+                                    <button class="btn btn-danger">ditolak</button>
+                                @elseIf($cuti->status == 'disetujui')
+                                    <button class="btn btn-success">Disetujui</button>
+                                @elseIf($cuti->status == 'diproses')
+                                    <button class="btn btn-warning">diproses</button>
+                                @else
+                                    <button class="btn btn-danger">tidak valid</button>
+                                @endif
+                            </center></td>
                             <td>
-                                <a href="{{route('detail.view')}}" class="btn btn-link">
+                                <a href="{{route('detailcutipegawai.view',$cuti->id)}}" class="btn btn-link">
                                     <button type="button" class="btn btn-info btn-sm">
                                         <i class="fas fa-solid fa-eye"></i>
                                         lihat

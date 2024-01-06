@@ -23,7 +23,7 @@ class AdminController extends Controller
     public function validAtasan(string $id)
     {
         $datacuti = CutiAtasan::find($id);
-        $datacuti->status = "Disetujui";
+        $datacuti->status = "disetujui";
         $datacuti->update();
         return redirect()->route('pengajuan_atasan.view');
     }
@@ -32,9 +32,7 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function detail(){
-        return view('admin.cuti_pegawai.view_detail_cuti_pegawai');
-    }
+   
     public function detailAtasan($id){
         $data = CutiAtasan::find($id);
         return view('admin.cuti_atasan.view_detail_cuti_atasan',compact('data'));
@@ -99,5 +97,44 @@ class AdminController extends Controller
     public function settingCuti()
     {
         return view('admin.view_pengaturan_cuti');
+    }
+
+    public function viewTidakValid($id)
+    {
+        $data = CutiAtasan::find($id);
+        return view('admin.cuti_atasan.view_form_tidak_valid_atasan',compact('data'));
+    }
+    public function storeTidakValid(Request $request,$id)
+    {
+        $data = CutiAtasan::find($id);
+        $data->alasanvalid = $request->alasanvalid;
+        $data->status = 'ditolak';
+        $data->update();
+        return redirect()->route('pengajuan_atasan.view');
+    }
+
+    public function detailCutiPegawai($id){
+        $data = Cuti::with('user', 'hubungan')->find($id);
+        return view('admin.cuti_pegawai.view_detail_cuti_pegawai', compact('data')); 
+    }
+    public function viewTidakValidPegawai($id)
+    {
+        $data = Cuti::find($id);
+        return view('admin.cuti_pegawai.view_form_tidak_valid',compact('data'));
+    }
+    public function validPegawai(string $id)
+    {
+        $datacuti = Cuti::find($id);
+        $datacuti->status = "disetujui";
+        $datacuti->update();
+        return redirect()->route('pengajuan.view');
+    }
+    public function storeTidakValidPegawai(Request $request,$id)
+    {
+        $data = Cuti::find($id);
+        $data->alasanvalid = $request->alasanvalid;
+        $data->status = 'ditolak';
+        $data->update();
+        return redirect()->route('pengajuan.view');
     }
 }

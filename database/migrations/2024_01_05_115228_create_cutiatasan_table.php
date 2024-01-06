@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Laravel\Prompts\table;
+
 return new class extends Migration
 {
     /**
@@ -21,6 +23,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('keterangan');
             $table->string('status')->default('Diajukan');
+            $table->text('alasanvalid')->nullable();
             $table->timestamps();
         });
     }
