@@ -75,6 +75,7 @@
                             <option value="tahunan">Cuti Tahunan</option>
                             <option value="penting">Cuti Penting</option>
                             <option value="besar">Cuti Besar</option>
+                            <option value="melahirkan">Cuti Melahirkan</option>
                         </select>
                     </div>
                     <div class="mb-3">

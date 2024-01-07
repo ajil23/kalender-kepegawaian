@@ -6,6 +6,8 @@ use App\Models\Kalender;
 use Illuminate\Http\Request;
 use App\Models\Cuti;
 use App\Models\CutiAtasan;
+use App\Models\User;
+use Carbon\Carbon;
 use PhpParser\Node\Expr\Cast\String_;
 
 class AdminController extends Controller
@@ -24,6 +26,22 @@ class AdminController extends Controller
     {
         $datacuti = CutiAtasan::find($id);
         $datacuti->status = "disetujui";
+
+        $tanggalAwal = Carbon::parse($datacuti->awal);
+        $tanggalAkhir = Carbon::parse($datacuti->akhir);
+        $selisihHari = $tanggalAkhir->diffInDays($tanggalAwal);
+      
+        $user = User::find( $datacuti->user_id);
+        if ($datacuti->jenis == 'tahunan') {
+            $user->tahunan += $selisihHari;
+        }elseif ($datacuti->jenis == 'penting') {
+            $user->penting += $selisihHari;
+        }elseif ($datacuti->jenis == 'melahirkan') {
+            $user->melahirkan += $selisihHari;
+        }elseif ($datacuti->jenis == 'besar') {
+            $user->besar += $selisihHari;
+        }
+        $user->save();
         $datacuti->update();
         return redirect()->route('pengajuan_atasan.view');
     }
@@ -32,15 +50,16 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-   
-    public function detailAtasan($id){
+
+    public function detailAtasan($id)
+    {
         $data = CutiAtasan::find($id);
-        return view('admin.cuti_atasan.view_detail_cuti_atasan',compact('data'));
+        return view('admin.cuti_atasan.view_detail_cuti_atasan', compact('data'));
     }
 
     public function rekapitulasiCuti()
     {
-        $datacuti = Cuti::all();
+        $datacuti = User::whereIn('role', [0, 2])->get();
         return view('admin.cuti_pegawai.view_rekapitulasi', ['datacuti' => $datacuti]);
     }
 
@@ -66,12 +85,11 @@ class AdminController extends Controller
             'end' => $request->end_event,
         ]);
         return response()->json($kalender);
-        
     }
-    public function updatekalender(Request $request ,$id)
+    public function updatekalender(Request $request, $id)
     {
         $kalender = Kalender::find($id);
-        if(! $kalender) {
+        if (!$kalender) {
             return response()->json([
                 'error' => 'Unable to locate the event'
             ], 404);
@@ -84,8 +102,8 @@ class AdminController extends Controller
     }
     public function kalenderDestroy($id)
     {
-        $booking = Kalender ::find($id);
-        if(! $booking) {
+        $booking = Kalender::find($id);
+        if (!$booking) {
             return response()->json([
                 'error' => 'Unable to locate the event'
             ], 404);
@@ -102,9 +120,9 @@ class AdminController extends Controller
     public function viewTidakValid($id)
     {
         $data = CutiAtasan::find($id);
-        return view('admin.cuti_atasan.view_form_tidak_valid_atasan',compact('data'));
+        return view('admin.cuti_atasan.view_form_tidak_valid_atasan', compact('data'));
     }
-    public function storeTidakValid(Request $request,$id)
+    public function storeTidakValid(Request $request, $id)
     {
         $data = CutiAtasan::find($id);
         $data->alasanvalid = $request->alasanvalid;
@@ -113,23 +131,40 @@ class AdminController extends Controller
         return redirect()->route('pengajuan_atasan.view');
     }
 
-    public function detailCutiPegawai($id){
+    public function detailCutiPegawai($id)
+    {
         $data = Cuti::with('user', 'hubungan')->find($id);
-        return view('admin.cuti_pegawai.view_detail_cuti_pegawai', compact('data')); 
+        return view('admin.cuti_pegawai.view_detail_cuti_pegawai', compact('data'));
     }
     public function viewTidakValidPegawai($id)
     {
         $data = Cuti::find($id);
-        return view('admin.cuti_pegawai.view_form_tidak_valid',compact('data'));
+        return view('admin.cuti_pegawai.view_form_tidak_valid', compact('data'));
     }
     public function validPegawai(string $id)
     {
         $datacuti = Cuti::find($id);
         $datacuti->status = "disetujui";
+
+        $tanggalAwal = Carbon::parse($datacuti->awal);
+        $tanggalAkhir = Carbon::parse($datacuti->akhir);
+        $selisihHari = $tanggalAkhir->diffInDays($tanggalAwal);
+      
+        $user = User::find( $datacuti->user_id);
+        if ($datacuti->jenis == 'tahunan') {
+            $user->tahunan += $selisihHari;
+        }elseif ($datacuti->jenis == 'penting') {
+            $user->penting += $selisihHari;
+        }elseif ($datacuti->jenis == 'melahirkan') {
+            $user->melahirkan += $selisihHari;
+        }elseif ($datacuti->jenis == 'besar') {
+            $user->besar += $selisihHari;
+        }
+        $user->save();
         $datacuti->update();
         return redirect()->route('pengajuan.view');
     }
-    public function storeTidakValidPegawai(Request $request,$id)
+    public function storeTidakValidPegawai(Request $request, $id)
     {
         $data = Cuti::find($id);
         $data->alasanvalid = $request->alasanvalid;

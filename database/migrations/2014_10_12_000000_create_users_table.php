@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('role')->default(0);  // pegawai = 0, admin = 1, atasan = 2
             $table->string('nip');
             $table->string('password');
-            $table->rememberToken();
+            $table->integer('tahunan')->default(0);
+            $table->integer('penting')->default(0);
+            $table->integer('melahirkan')->default(0);
+            $table->integer('besar')->default(0);
             $table->string('golongan');
             $table->string('jabatan');
             $table->string('unitkerja');
