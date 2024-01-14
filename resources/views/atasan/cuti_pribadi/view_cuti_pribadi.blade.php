@@ -68,8 +68,10 @@
                                                 <button class="btn btn-info">Diajukan</button>
                                             @elseIf($item->status == 'ditolak')
                                                 <button class="btn btn-danger">ditolak</button>
-                                            @elseIf($item->status == 'valid')
-                                                <button class="btn btn-warning">valid</button>
+                                            @elseIf($item->status == 'disetujui')
+                                                <button class="btn btn-success">Disetujui</button>
+                                            @elseIf($item->status == 'diproses')
+                                                <button class="btn btn-warning">diproses</button>
                                             @else
                                                 <button class="btn btn-danger">tidak valid</button>
                                             @endif
